@@ -1,0 +1,84 @@
+// File Paths
+$path-fonts: "fonts";
+$path-images: "img";
+
+// Colors
+
+$black: #000;
+$white: #fff;
+
+// Bootstrap overrides
+
+$body-bg: #bbb;
+$body-color: #3F3E3E;
+
+$font-family-base: "Metropolis", Helvetica, Arial, sans-serif;
+$font-size-base: 1.125rem; // 18px
+
+$link-color: #0096D9;
+$link-decoration: none;
+$link-hover-color: $link-color;
+$link-hover-decoration: underline;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Custom
+
+$body-color-darker: #333;
+$body-color-darkest: #111;
+
+// Container
+
+$container-background: $white;
+$container-max-width: 1440px;
+
+// Header
+
+$header-background: #f2f2f2;
+$header-foreground: #777;
+$header-foreground-selected: #111;
+
+// Footer
+$footer-foreground: #777;
+$footer-copyright: #3F3E3E;
+
+// Sections
+
+$section-content-max-width: 996px;
+$section-grey-background: #f2f2f2;
+
+$section-blue-background: #0165AB;
+$section-blue-foreground: $white;
+
+// Cards
+
+$card-dark-background: #0165AB;
+$card-dark-foreground: $white;
+$card-dark-link: $white;
+$card-dark-link-hover: $white;
+
+$card-light-background: #FBFBFB;
+$card-light-border: #e8e8e8;
+
+// Buttons
+
+$button-primary-background: #0095D3;
+$button-primary-background-hover: #47b2e0;
+$button-primary-foreground: $white;
+$button-primary-border: $button-primary-background;
+$button-primary-border-hover: $button-primary-background-hover;
+
+$button-secondary-background: $white;
+$button-secondary-background-hover: #f2fafd;
+$button-secondary-foreground: #0095D3;
+$button-secondary-border: $button-secondary-foreground;
+$button-secondary-border-hover: $button-secondary-border;
+
+// Posts
+$post-hero-gradient-start: #fafafa;
+$post-hero-gradient-end: #ddd;
+$post-meta-foreground: $body-color-darker;

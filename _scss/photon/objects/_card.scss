@@ -1,0 +1,26 @@
+.card {
+  border-radius: 6px;
+
+  .card-body {
+    padding: 2rem 1.25rem;
+  }
+
+  &.card-dark {
+    color: $card-dark-foreground;
+    background-color: $card-dark-background;
+
+    a {
+      color: $card-dark-link;
+
+      &:hover {
+        color: $card-dark-link-hover;
+      }
+    }
+  }
+
+  &.card-light {
+    color: $body-color-darker;
+    background-color: $card-light-background;
+    border-color: $card-light-border;
+  }
+}

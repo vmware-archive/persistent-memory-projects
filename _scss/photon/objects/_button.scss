@@ -1,0 +1,37 @@
+.btn {
+  font-size: 0.875rem;
+  border-radius: 3px;
+}
+
+.btn-sm {
+  font-size: 0.75rem;
+  padding: 8px 50px;
+}
+
+.btn-primary {
+  color: $button-primary-foreground;
+  background-color: $button-primary-background;
+  border-color: $button-primary-border;
+  font-weight: $font-weight-bold;
+
+  &:hover {
+    color: $button-primary-foreground;
+    background-color: $button-primary-background-hover;
+    border-color: $button-primary-border-hover;
+    text-decoration: underline;
+  }
+}
+
+.btn-secondary {
+  color: $button-secondary-foreground;
+  background-color: $button-secondary-background;
+  border-color: $button-secondary-border;
+  font-weight: $font-weight-bold;
+
+  &:hover {
+    color: $button-secondary-foreground;
+    background-color: $button-secondary-background-hover;
+    border-color: $button-secondary-border-hover;
+    text-decoration: underline;
+  }
+}

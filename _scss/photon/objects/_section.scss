@@ -1,0 +1,40 @@
+.section {
+  padding: 40px 30px;
+
+  &.section-blue {
+    color: $section-blue-foreground;
+    background: $section-blue-background;
+  }
+
+  &.section-grey {
+    color: $body-color-darkest;
+    background: $section-grey-background;
+  }
+
+  &.section-card {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    
+    .section-content {
+      max-width: $section-content-max-width + 60;
+      background: $white;
+      border-radius: 10px;
+      padding: 45px 30px;
+
+      @include media-breakpoint-down(sm) {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .section-content {
+    max-width: $section-content-max-width;
+    margin: 0 auto;
+
+    &.section-content-thin {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+}

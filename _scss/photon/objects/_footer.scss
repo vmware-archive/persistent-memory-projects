@@ -1,0 +1,43 @@
+.site-footer {
+  .social-links {
+      color: $footer-foreground;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      a {
+          color: $footer-foreground;
+
+          &:hover {
+              color: $footer-foreground;
+          }
+      }
+
+      li {
+          padding: 5px;
+      }
+  }
+
+  .copyright {
+      color: $footer-copyright;
+      font-size: 0.75rem;
+
+      .footer-logo {
+        margin-bottom: 1rem;
+        
+        .logo {
+            max-width: 220px;
+            height: auto;
+
+            @include media-breakpoint-up(md) {
+                width: 100%;
+            }
+        }
+        .vm-logo {
+            max-width: 80px;
+            height: auto;
+            display: block;
+        }
+      }
+  }
+}

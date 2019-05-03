@@ -1,0 +1,32 @@
+<h2 class="text-center">Contributors</h2>
+<div class="row thumbnail-grid">
+    {% for person in site.contributors %}
+    <div class="col-md-3 thumbnail-item">
+    <div class="thumbnail">
+        <img src="{{ person.image }}" alt="Person" />
+    </div>
+    <h6><a href="#">{{ person.first_name }}, {{ person.last_name }}</a></h6>
+    <p>{{ person.content | markdownify }}</p>
+    </div>
+{% assign row = forloop.index | modulo: 5 %}
+{% if row == 0 %}
+</div>
+<div class="row thumbnail-grid">    
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="mt-4">
+<p>The PMEM project team at VMware welcomes contributions from the community. If you would like to contribute code and
+    you
+    have not signed our Contributor License Agreement (CLA), our CLA-bot will walk you through the process and
+    update
+    the issue when you open a Pull Request. For questions about the CLA process,
+    see <strong><a href="https://cla.vmware.com/faq">the
+        FAQ</a></strong> or submit a question
+    through the GitHub issue tracker.</p>
+
+<p>Each of the persistent memory project is released as open source software and provides community support through their respective GitHub project page.
+    If you encounter an issue or have a question, feel free to reach out on the GitHub issues page.</p>
+</div>
+    

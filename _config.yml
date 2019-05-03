@@ -1,0 +1,76 @@
+# Site settings
+title: Persistent Memory Projects at VMware
+email:
+author: AFG-vmware
+description:
+url:
+logo: pmem-logo.png
+vm_logo: vm-logo.png
+footer:
+  title: Getting Started
+  content: To help you get started, see the documentation. For additional information and resources, see the Photon OS wiki.
+  cta_title: Photon OS 1.0 and 2.0 Documentation
+  cta_url: http://www.example.com
+  cta_text: Download
+  vm-link: http://vmware.github.io/
+
+footer_social_links:
+#  Facebook:
+#    fa_icon: fab fa-facebook
+#    url: http://www.facebook.com
+  Slack:
+    fa_icon: fab fa-slack
+    url: http://www.slack.com/vmware
+  User Group:
+    fa_icon: fas fa-users
+    url: https://communities.vmware.com
+  Twitter:
+    fa_icon: fab fa-twitter
+    url: http://www.twitter.com/vmware
+#  RSS:
+#    fa_icon: fa fa-rss
+#    url: feed.xml
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" 
+    values:
+      layout: "posts"
+
+collections:
+  - contributors
+  - casestudies
+
+# Build settings
+permalink: :title/
+sass:
+  sass_dir: css
+  style: :compressed
+
+# Use the following plug-ins
+plugins:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-relative-links # Used to auto generate md links to html links
+  - jekyll-optional-front-matter # Parse Markdown files that do not have front-matter callouts
+  - jekyll-readme-index # use README.md as index.html
+  - jekyll-titles-from-headings # pull the page title from the first Markdown heading when none is specified.
+  - jekyll-paginate # pagination object for collections (e.g. posts)
+
+
+# Include these subdirectories
+include: 
+  - CONTRIBUTING.md
+  - README.md
+
+# Exclude these files from your production _site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README-JEKYLL.md
+  - LICENSE
+  - CNAME
+  - Runbook.docx
+  - '*.sh'

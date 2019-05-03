@@ -1,0 +1,26 @@
+<h5 class="font-color-darker">Related Content</h5>
+<div class="row">
+  {% for category in site.categories limit:1 %}
+
+  {% for post in category[1] limit:2 %}
+  <div class="col-md">
+    <div class="card card-light mb-3 mb-md-0">
+      <div class="card-body match-height">
+        <article class="post">
+          <div class="post-thumbnail">
+            <img src="{{ post.image }}" alt="{{ post .title }}" />
+          </div>
+          <h5 class="text-center font-weight-medium">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="post-title">{{ post.title }}</a>
+          </h5>
+          <div class="post-entry">
+            {{ post.excerpt | strip_html }}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+  {% endfor %}
+</div>

@@ -1,0 +1,23 @@
+.thumbnail-grid {
+  p {
+    font-size: 1rem;
+  }
+
+  .thumbnail-item {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+
+  }
+}
