@@ -1,5 +1,6 @@
 ---
 first_name: Jerrin
 last_name: Shaji George
-image: https://via.placeholder.com/80x80.png?text=JD1
+image: https://avatars2.githubusercontent.com/u/883541?v=4
+github_url: https://github.com/jerrinsg
 ---

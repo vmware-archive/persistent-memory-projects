@@ -5,7 +5,11 @@
     <div class="thumbnail">
         <img src="{{ person.image }}" alt="Person" />
     </div>
-    <h6><a href="#">{{ person.first_name }}, {{ person.last_name }}</a></h6>
+    <h6>
+        {% if person.github_url != nil %}<a href="{{ person.github_url }}">{% endif %}
+            {{ person.first_name }} {{ person.last_name }}
+            {% if person.github_url != nil %}</a>{% endif %}
+    </h6>
     <p>{{ person.content | markdownify }}</p>
     </div>
 {% assign row = forloop.index | modulo: 5 %}

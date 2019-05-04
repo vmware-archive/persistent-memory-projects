@@ -4,7 +4,7 @@ email:
 author: AFG-vmware
 description:
 url:
-logo: pmem-logo.png
+logo: pmem-logo-1.png
 vm_logo: vm-logo.png
 footer:
   title: Getting Started
@@ -20,7 +20,7 @@ footer_social_links:
 #    url: http://www.facebook.com
   Slack:
     fa_icon: fab fa-slack
-    url: http://www.slack.com/vmware
+    url: https://vmwarecode.slack.com
   User Group:
     fa_icon: fas fa-users
     url: https://communities.vmware.com
