@@ -25,11 +25,11 @@
             </div>
             <div class="col-md-3 offset-md-1 copyright">
                 <div class="footer-logo">
-                    <a href="/" alt="Homepage"><img src="/img/{{ site.logo }}" class="logo" /></a>
+                    <a href="/" alt="Homepage"><img src="{{ site.baseurl }}/img/{{ site.logo }}" class="logo" /></a>
                 </div>
                 <div class="footer-logo">
                 <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
-                <p><a href="{{ site.footer.vm-link }}"><img src="/img/{{ site.vm_logo }}" class="vm-logo" />A VMware backed project</a></p>
+                <p><a href="{{ site.footer.vm-link }}"><img src="{{ site.baseurl }}/img/{{ site.vm_logo }}" class="vm-logo" />A VMware backed project</a></p>
                 </div>
             </div>
         </div>

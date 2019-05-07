@@ -3,7 +3,7 @@
         <div class="card-body match-height">
             <article class="post">
                 <div class="post-thumbnail">
-                    <img src="{{ post.image }}" alt="{{ post .title }}" />
+                    <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post .title }}" />
                 </div>
                 <h5 class="text-center font-weight-medium">
                     <a href="{{ site.baseurl }}{{ post.url }}" class="post-title">{{ post.title }}</a>
