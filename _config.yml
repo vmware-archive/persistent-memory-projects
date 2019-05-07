@@ -6,10 +6,11 @@ description:
 url:
 logo: pmem-logo.png
 vm_logo: vm-logo.png
+baseurl: /pmem-vmware
 footer:
   title: Getting Started
   content: To help you get started, see the documentation. For additional information and resources, see the Resources page.
-  cta_title: Photon OS 1.0 and 2.0 Documentation
+  cta_title: Pmem Documentation
   cta_url: https://github.com/vmware/go-pmem-transaction/archive/master.zip
   cta_text: Download
   vm-link: http://vmware.github.io/
