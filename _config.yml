@@ -6,7 +6,7 @@ description:
 url:
 logo: pmem-logo.png
 vm_logo: vm-logo.png
-baseurl: /pmem-vmware
+baseurl: /persistent-memory-projects
 footer:
   title: Getting Started
   content: To help you get started, see the documentation. For additional information and resources, see the Resources page.
