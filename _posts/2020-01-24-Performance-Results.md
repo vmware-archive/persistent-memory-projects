@@ -40,7 +40,7 @@ from CLBG. Binary Tree creates multiple perfect binary trees and reports the
 time taken for the program execution. It creates one very big tree and several
 trees of short depth.
 <figure>
-<img src="../img/tikz/e1-1.svg" height="250" />
+<img src="../img/tikz/e1-1.svg"/>
 <figcaption>Fig.1: Binary Tree benchmark running time comparison (lower is better)</figcaption>
 </figure>
 
@@ -62,12 +62,12 @@ of elements in the array. These operations are all performed within a single
 transaction, making it run for a long period of time.
 
 <figure>
-<img src="../img/tikz/e1-2.svg" height="250" />
+<img src="../img/tikz/e1-2.svg"/>
 <figcaption>Fig.2: fannkuch benchmark running time (lower is better)</figcaption>
 </figure>
 
 <figure>
-<img src="../img/tikz/e1-3.svg" height="300" />
+<img src="../img/tikz/e1-3.svg"/>
 <figcaption>Fig.3: sps benchmark running time (lower is better)</figcaption>
 </figure>
 
@@ -79,7 +79,7 @@ performance go-pmem is 3 to 4 times better than PMDK as transaction size grows.
 ### Several Short Transactions
 
 <figure>
-<img src="../img/tikz/e1-4.svg" height="250" />
+<img src="../img/tikz/e1-4.svg"/>
 <figcaption>Fig.4: n-body benchmark comparison (lower is better)</figcaption>
 </figure>
 
@@ -97,7 +97,7 @@ the number of steps in the benchmark reaches 10 million.
 ### Undo Transaction Recovery After a Crash
 
 <figure>
-<img src="../img/tikz/e1-a.svg" height="250" />
+<img src="../img/tikz/e1-a.svg" />
 <figcaption>Fig.5: Transaction recovery time comparison (lower is better)</figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ goals.
 ### Restart Time of Persistent Heaps
 
 <figure>
-<img src="../img/tikz/e-fill-heap.svg" height="250" />
+<img src="../img/tikz/e-fill-heap.svg"/>
 <figcaption>Fig.6: Heap recovery time comparison (lower is better)</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ of the heap size.
 ### Restart Time of Redis Variations
 
 <figure>
-<img src="../img/tikz/e-redis-restart.svg" height="300" />
+<img src="../img/tikz/e-redis-restart.svg" />
 <figcaption>Fig.7: Restart time of various Redis versions (lower is better)</figcaption>
 </figure>
 
@@ -161,7 +161,7 @@ performance difference.
 ## Go-redis-pmem
 
 <figure>
-<img src="../img/tikz/e1-7.svg" height="250" />
+<img src="../img/tikz/e1-7.svg"/>
 <figcaption>Fig.8: Memtier benchmark throughput comparison on various Redis versions (higher is better)</figcaption>
 </figure>
 
@@ -187,8 +187,8 @@ Pipeline = 1
 2. Haris Volos, Andres Jaan Tack, and Michael M Swift. Mnemosyne: Lightweight persistent memory. In ACM SIGARCH Computer Architecture News, volume 39, pages 91–104. ACM, 2011.
 3. Kumud Bhandari, Dhruva R Chakrabarti, and Hans-J Boehm. Makalu: Fast recoverable allocation of nonvolatile memory. In ACM SIGPLAN Notices, volume 51, pages 677–694. ACM, 2016.
 4. Fulgham, Brent, and Isaac Gouy. "The computer language benchmarks game." (2009).
-5. Intel corporation. pmem-redis. https://github.com/pmem/redis.
-6. Golang benchmarks. https://github.com/golang/benchmarks/.
-7. Redis labs. redis and memcached traffic generation and benchmarking tool. https://github.com/RedisLabs/memtier_benchmark.
-8. go-redis-pmem. https://github.com/vmware-samples/go-redis-pmem
-9. go-pmem-transaction. https://github.com/vmware/go-pmem-transaction
+5. Intel corporation. pmem-redis. [https://github.com/pmem/redis](https://github.com/pmem/redis).
+6. Golang benchmarks. [https://github.com/golang/benchmarks/](https://github.com/golang/benchmarks/).
+7. Redis labs. redis and memcached traffic generation and benchmarking tool. [https://github.com/RedisLabs/memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark).
+8. go-redis-pmem. [https://github.com/vmware-samples/go-redis-pmem](https://github.com/vmware-samples/go-redis-pmem)
+9. go-pmem-transaction. [https://github.com/vmware/go-pmem-transaction](https://github.com/vmware/go-pmem-transaction)
