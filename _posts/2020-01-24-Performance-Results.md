@@ -9,8 +9,9 @@ memory (pmem) libraries such as PMDK [1], Mnemosyne [2], and Makalu [3]. This
 post gives a summary of the various benchmarks performed.
 
 We use benchmarks from the Computer Language Benchmarks Game (CLBG) [4] to
-compare various pmem libraries. We also compare our Redis implementation against
-vanilla Redis and also with PMDK Redis [5].
+compare various pmem libraries. We also compare a Redis server implemented using
+go-pmem (go-redis-pmem) [8] against upstream Redis (C Redis) and also with PMDK
+Redis [5].
 
 ## Machine Configuration
 
@@ -20,17 +21,17 @@ total installed DRAM and 4 Intel® Optane™ DC Persistent memory DIMMs, each of
 
 ## Compilation Time Change
 
-Our changes to the Go compiler are twofold - changes to the runtime for persistent
-memory allocation support and changes to the SSA pass for automatic instrumentation
-of user code for transactional support. To measure the overheads introduced by
-our changes, we compared the change in compilation time of the Go compiler
-before and after our changes. We also compare change in compilation time of
-go-pmem-redis when compiled using the new SSA phase and using the earlier
-library version of transactions.
+Our changes to the Go compiler are twofold - changes to the runtime for
+persistent memory allocation support and changes to the SSA pass for automatic
+instrumentation of user code for transactional support. To measure the overheads
+introduced by our changes, we compared the change in compilation time of the Go
+compiler before and after our changes. We also compare change in compilation
+time of go-redis-pmem when compiled using the new SSA phase and using the
+earlier library version of transaction package [9].
 
 * Go compilation time increased by 3.4% from 42.71s to 44.16s
-* Difference in go-redis-pmem compilation with the new SSA phase was less than 0.5%
-at 0.713s compared to 0.71s with the library version.
+* Difference in go-redis-pmem compilation with the new SSA phase was less than
+0.5% at 0.713s compared to 0.71s with the library version of transaction package.
 
 ## Performance of the Memory Allocator
 
@@ -45,19 +46,20 @@ trees of short depth.
 
 As seen in figure 1, running time of go-pmem and Makalu are an order of magnitude
 better than PMDK and Mnemosyne. This is because in PMDK and Mnemosyne,
-each memory allocation result in data being written to persistent memory, whereas
-go-pmem and Makalu write to pmem only at a larger block-level allocation. 
+each memory allocation result in metadata being written to persistent memory,
+whereas go-pmem and Makalu write to pmem only at a larger block-level allocation.
 
 ## Performance of Transactions
 
 ### Long Running Transactions
 
 We use the _fannkuch_ and _sps_ benchmarks to model long running transactions.
-_fannkuch_ benchmark shuffles elements of array for all n! permutations of that array.
-So the number of intermediate array representations increases exponentially as
-the size of the array increases. The _sps_ benchmark swaps elements of a given
-array. The number of swaps performed is equal to the number of elements in the
-array.
+_fannkuch_ benchmark shuffles elements of an array for all n! permutations of
+that array. So the number of intermediate array representations increases
+exponentially as the size of the array increases. The _sps_ benchmark swaps
+elements of a given array. The number of swaps performed is equal to the number
+of elements in the array. These operations are all performed within a single
+transaction, making it run for a long period of time.
 
 <figure>
 <img src="../img/tikz/e1-2.svg" height="250" />
@@ -69,8 +71,9 @@ array.
 <figcaption>Fig.3: sps benchmark running time (lower is better)</figcaption>
 </figure>
 
-In the _sps_ and _fannkuch_ benchmarks (figure 2 and 3 above), it is seen that
-the Mnemosyne curve does not scale as the transaction size grows. The
+In the _fannkuch_ and _sps_ benchmarks (figure 2 and 3 respectively), it is seen
+that the Mnemosyne curve does not scale as the transaction size grows. The PMDK
+implementation also supports a maximum pmem heap size of only 2GB. The
 performance go-pmem is 3 to 4 times better than PMDK as transaction size grows.
 
 ### Several Short Transactions
@@ -83,7 +86,9 @@ performance go-pmem is 3 to 4 times better than PMDK as transaction size grows.
 The _n-body_ benchmark from CLBG is used to measure the performance of a short
 transaction. In a short transaction, the transaction setup time becomes the
 hotspot rather than the transaction execution. _n-body_ benchmark models the
-movement of a planet, and each step is performed transactionally. As seen in
+movement of a planet, and each step is performed transactionally. Each step
+computes the new coordinates representing the position of a planet as it moves
+in an orbit. As seen in
 figure 4, go-pmem performs 2 to 3 times better than PMDK and Mnemosyne even as
 the number of steps in the benchmark reaches 10 million.
 
@@ -147,10 +152,11 @@ persists its data as an Append Only File (AOF) file.
 | HTTP-24    | 73.9μs   | 75.5μs  | 2.15% |
 
 
-Go uses a set of benchmarks [6] to measure the performance of the compiler, 
-allocator, GC, etc. after new features are added to the language. The above
-table compares how these benchmarks fare on go-pmem compared to Go 1.11 upon
-which our changes are based on. Our changes add little-to-no performance difference.
+Go uses a set of benchmarks [6] to measure the performance of the compiler,
+allocator, garbage collector, etc. after new features are added to the language.
+The above table compares how these benchmarks fare on go-pmem compared to Go
+1.11 upon which our changes are based on. Our changes add little-to-no
+performance difference.
 
 ## Go-redis-pmem
 
@@ -162,7 +168,10 @@ which our changes are based on. Our changes add little-to-no performance differe
 Figure 8 compares the throughput observed when memtier benchmark [7] is run
 on the following Redis versions - C Redis running on SSD, C Redis running on
 pmem used in block I/O mode, PMDK Redis, and go-redis-pmem. It is seen that
-go-redis-pmem throughput matches the performance of PMDK Redis.
+go-redis-pmem throughput matches the performance of PMDK Redis. It performs up
+to 53% better than Redis using pmem as block I/O and up to 5.4x better than Redis
+using SSD. This confirms that applications hand-modified to use pmem gets
+maximum performance benefits, compared to pmem used as block I/O and SSDs.
 
 The memtier benchmark configuration used is the following:
 Num. threads = 12
@@ -181,3 +190,5 @@ Pipeline = 1
 5. Intel corporation. pmem-redis. https://github.com/pmem/redis.
 6. Golang benchmarks. https://github.com/golang/benchmarks/.
 7. Redis labs. redis and memcached traffic generation and benchmarking tool. https://github.com/RedisLabs/memtier_benchmark.
+8. go-redis-pmem. https://github.com/vmware-samples/go-redis-pmem
+9. go-pmem-transaction. https://github.com/vmware/go-pmem-transaction
