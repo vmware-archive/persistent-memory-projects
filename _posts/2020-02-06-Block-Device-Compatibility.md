@@ -11,8 +11,8 @@ This layer provides weaker consistency guarantee than *go-pmem* running on
 persistent memory, but lets developers use and test our package on machines
 which has only block I/O storage. The weaker consistency guarantees offered by
 this compatibility layer are the following:
-* Our package is resilient to application crashes or restarts
-* In case of a host crash or restart, data can get irrecoverably corrupted
+* it is resilient to application crashes or restarts
+* in case of a host crash or restart, data can get irrecoverably corrupted
 
 ## Innards
 
@@ -21,17 +21,17 @@ flushing and memory barrier instructions as required. But if the file passed to
 ```pmem.Init()``` function resides in a block I/O device, then an ```msync()```
 system call has to be issued to ensure data writes are persistent. ```msync()```
 flushes to disk data at a page granularity. Therefore, issuing ```msync()``` for
-byte-level data updates leads to write-amplification and significantly slowdown
+byte-level data updates leads to write-amplification and significant slowdown
 of applications. To offer a reduced consistency guarantee to applications,
 but at the same time let them use our package on a machine without pmem, we
 developed a compatibility layer to *go-pmem*. If *go-pmem* identifies that the
 pmem file resides on a block I/O device, no explicit ```msync()``` is issued to
 ensure data persistence. Instead, we rely on the kernel to periodically flush
-dirty data from the DRAM to disk. Dirty data is also flushed to persistent media
-when the application exits or crashes. But if the host machine abruptly loses
-power or is restarted, then there is no guarantee that dirty data would have 
-been synced to disk. This is the reason for the reduced consistency guarantee 
-offered in this compatibility mode.
+dirty data from the DRAM to disk. Dirty data is also flushed, by the operating
+system, to persistent media when the application exits or crashes. But if the
+host machine abruptly loses power or is restarted, then there is no guarantee
+that dirty data would have been synced to disk. This is the reason for the
+reduced consistency guarantee offered in this compatibility mode.
 
 ## Usage
 
@@ -110,3 +110,12 @@ on pmem and SSD. The following graphs shows this data.
 <img src="../img/tikz-compatibility/sps.svg"/>
 <figcaption>Fig. 4: sps benchmark running time (lower is better)</figcaption>
 </figure>
+
+## Conclusion
+
+We hope developers interested in programming persistent memory find the block
+compatibility layer of *go-pmem* useful, as it obviates the need for having
+access to a pmem device. The higher performance offered by this layer lets
+developers quickly prototype their solutions and even develop full-fledged pmem
+applications. Once pmem hardware is available, these applications can then make
+use of the new hardware by simply moving its data file to the pmem device.
