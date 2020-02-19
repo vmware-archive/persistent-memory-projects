@@ -2,7 +2,8 @@
 
 ## Overview
 This repository holds the GitHub pages for sharing information about various
-persistent memory projects happening in VMware.
+persistent memory projects happening in VMware. Visit the website at
+https://vmware.github.io/persistent-memory-projects/.
 
 ## Dependencies
 If you are running a build on Ubuntu you will need the following packages 
