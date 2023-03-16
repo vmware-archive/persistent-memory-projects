@@ -1,5 +1,7 @@
 # Persistent Memory Projects at VMware
 
+**_VMware has ended active development of this project, this repository will no longer be updated._**
+
 ## Overview
 This repository holds the GitHub pages for sharing information about various
 persistent memory projects happening in VMware. Visit the website at
